@@ -1,5 +1,6 @@
+# go-authsvc
 
-A Golang authentication package powered by the Stytch API, facilitating custom login, user management, and session handling.
+A  Custom written Golang authentication package powered by the Stytch API, facilitating custom login, user management, and session handling.
 
 ## Features
 
@@ -25,4 +26,4 @@ We welcome contributions! Feel free to open issues for bug reports or feature re
 3. Submit a pull request with a clear description of your changes.
 
 ## License
-This project is licensed under the MIT License: LICENSE. # go-authsvc
+This project is licensed under the MIT License: LICENSE. 

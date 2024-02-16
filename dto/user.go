@@ -38,6 +38,7 @@ type (
 		PasswordIsEnabled bool
 		TotpIsEnabled     bool
 		IsAccountActive   bool
+		ReferralCode      string
 		EmailAddresses    []Email
 		OAuthAccounts     []OAuthAccount
 		TrustedMetadata   TrustedMetadata
@@ -67,9 +68,10 @@ func ConvertStytchUserToUser(user users.User) User {
 		TotpId:            totpIdOrHash,
 		EmailIsVerified:   emailIsVerified,
 		PhoneIsVerified:   converter.getIsPhoneVerifiedFromMetadata(metadata.UserPhoneNumber),
-		TotpIsEnabled:     totpIsEnabled,
 		PasswordIsEnabled: converter.getIsPasswordEnabled(),
+		TotpIsEnabled:     totpIsEnabled,
 		IsAccountActive:   converter.getIsAccountActive(),
+		ReferralCode:      metadata.SystemUserID,
 		EmailAddresses:    converter.getEmailAddresses(),
 		OAuthAccounts:     converter.getOAuth(),
 		TrustedMetadata:   converter.getTrustedMetadata(),

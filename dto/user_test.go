@@ -10,16 +10,16 @@ import (
 
 var testMetadata, testMetadataMap = func() (TrustedMetadata, map[string]any) {
 	testTrustedMetadata := TrustedMetadata{
-		SystemUserID:       "12345TRE",
-		UserRole:           "customer",
-		UserPhoneNumber:    toPointer("+1234567890"),
-		UserProfileImage:   nil,
-		NotificationEmail:  false,
-		NotificationPush:   false,
-		NotificationSMS:    false,
-		NotificationInApp:  false,
-		TransactionPinHash: nil,
-		WebhookURL:         nil,
+		SystemUserID:      "12345TRE",
+		UserRole:          "customer",
+		UserPhoneNumber:   toPointer("+1234567890"),
+		UserProfileImage:  nil,
+		NotificationEmail: false,
+		NotificationPush:  false,
+		NotificationSMS:   false,
+		NotificationInApp: false,
+		PinHash:           nil,
+		WebhookURL:        nil,
 	}
 
 	m, _ := DecodeFromXToX[map[string]any](testTrustedMetadata, false)
@@ -77,6 +77,7 @@ func TestConvertStytchUserToUser(t *testing.T) {
 		PasswordIsEnabled: true,
 		TotpIsEnabled:     true,
 		IsAccountActive:   true,
+		ReferralCode:      testMetadata.SystemUserID,
 		EmailAddresses: []Email{
 			{Id: testUser.Emails[0].EmailID, Address: testUser.Emails[0].Email, Verified: false},
 			{Id: testUser.Emails[1].EmailID, Address: testUser.Emails[1].Email, Verified: true},

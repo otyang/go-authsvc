@@ -52,15 +52,15 @@ func TestUserService_UpdateProfile(t *testing.T) {
 	}
 
 	got, err := u.UpdateProfile(context.TODO(), userId, &dto.UpdateUserParams{
-		Name:               dto.Name{FirstName: "Xxa", MiddleName: "X", LastName: "X"},
-		UserRole:           toPointer("1role"),
-		UserPhoneNumber:    toPointer("1_phone_number"),
-		UserProfileImage:   toPointer("1_profile_image"),
-		NotificationEmail:  toPointer(true),
-		NotificationPush:   toPointer(false),
-		NotificationSMS:    toPointer(true),
-		NotificationInApp:  toPointer(false),
-		TransactionPinHash: toPointer("1pin"),
+		Name:              dto.Name{FirstName: "Xxa", MiddleName: "X", LastName: "X"},
+		UserRole:          toPointer("1role"),
+		UserPhoneNumber:   toPointer("1_phone_number"),
+		UserProfileImage:  toPointer("1_profile_image"),
+		NotificationEmail: toPointer(true),
+		NotificationPush:  toPointer(false),
+		NotificationSMS:   toPointer(true),
+		NotificationInApp: toPointer(false),
+		PinHash:           toPointer("1pin"),
 	})
 
 	assert.Error(t, err)

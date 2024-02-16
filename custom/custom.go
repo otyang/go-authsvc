@@ -64,10 +64,13 @@ func (s *CustomService) SignIn(ctx context.Context, param SigninParams) (*Signin
 					continue
 				}
 
-				g.Go(func() error {
-					_, err := s.client.Sessions.Revoke(ctx, &sessions.RevokeParams{SessionID: sesn.SessionID})
-					return err
-				})
+				g.Go(func(sc *CustomService) func() error {
+					return func() error {
+						_, err := sc.client.Sessions.Revoke(ctx, &sessions.RevokeParams{SessionID: sesn.SessionID})
+						return err
+					}
+				}(s))
+
 				if err := g.Wait(); err != nil {
 					return nil, dto.HandleError(err)
 				}
